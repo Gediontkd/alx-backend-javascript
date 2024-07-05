@@ -1,28 +1,21 @@
+
 #!/usr/bin/env python3
-"""Given the parameters and the return values, add type
-annotations to the function
-
-Hint: look into TypeVar
-
-def safely_get_value(dct, key, default = None):
-    if key in dct:
-        return dct[key]
-    else:
-        return default
 """
+101-safely_get_value.py
+"""
+from typing import Mapping, Any, Union, TypeVar
 
 
-import typing
+T = TypeVar('T')
+Ret = Union[Any, T]
+Def = Union[T, None]
 
 
-T = typing.TypeVar('T')
-
-
-def safely_get_value(dct: typing.Mapping, key: typing.Any, default:
-                     typing.Union[T, None] = None) -> \
-        typing.Union[typing.Any, T]:
-    """annotations of the function"""
+def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Ret:
+    '''Retrieves a value from a dict using a given key.
+    '''
     if key in dct:
         return dct[key]
     else:
         return default
+
